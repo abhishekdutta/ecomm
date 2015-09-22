@@ -1,0 +1,26 @@
+<div id="product_content">
+	<h1 class="title">
+		<%= @product.title %>
+	</h1>
+	<p class="date">
+		Submitted <%= time_ago_in_words(@product.created_at) %> Ago
+		<% if user_signed_in? %>
+		| <%=link_to 'Edit', edit_product_path(@product) %> |
+		  <%= link_to 'Delete', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</p>
+
+		<%= image_tag @product.image.url{:medium} %>
+	
+	<p class="body">
+		<%= @product.body %>
+	</p>
+
+	<div id="comments">
+		<h2><%= @product.comments.count %> Comments</h2>
+		<%= render @product.comments %>
+
+		<h3>Add a comment:</h3>
+		<%= render "comments/form" %>
+	</div>
+</div>

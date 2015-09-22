@@ -1,0 +1,7 @@
+<% @products.each do |product| %>
+	<div class="product_wrapper">
+		<h2 class="title"><%= link_to product.title, product %></h2>
+		<p class="date"><%= product.created_at.strftime("%B, %d, %Y") %></p>
+		<p><%= image_tag product.image.url(:thumb) %></p>
+	</div>
+<% end %>
